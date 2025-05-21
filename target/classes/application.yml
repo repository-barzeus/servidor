@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:barzeus;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS BARZEUS
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        "default_schema": BARZEUS
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  application:
+    name: Barzeus
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+  output:
+    ansi:
+      enabled: ALWAYS
+server:
+  port: 8080
+  servlet:
+    context-path: /api/v2
+
+# Configuração simplificada do Springdoc
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+  api-docs:
+    path: /v3/api-docs
+    enabled: true
+  packages-to-scan: br.com.douglasdreer.Barzeus.controller
